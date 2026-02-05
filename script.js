@@ -169,7 +169,7 @@ function generateSkills() {
         skillItem.innerHTML = `
       <div class="skill-header">
         <span class="skill-name">${skill.name}</span>
-        <span class="skill-percentage">${skill.percentage}%</span>
+        <span class="skill-percentage" data-target="${skill.percentage}">0%</span>
       </div>
       <div class="skill-bar">
         <div class="skill-bar-fill" data-percentage="${skill.percentage}"></div>
@@ -179,6 +179,7 @@ function generateSkills() {
         skillsList.appendChild(skillItem);
     });
 }
+
 
 // ===================================
 // Generate Education
@@ -253,10 +254,12 @@ window.addEventListener('scroll', reveal);
 function animateSkills() {
     const skillsSection = document.querySelector('.skills-section');
     const skillBars = document.querySelectorAll('.skill-bar-fill');
+    const skillNumbers = document.querySelectorAll('.skill-percentage');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Animate Bars
                 skillBars.forEach(bar => {
                     const percentage = bar.getAttribute('data-percentage');
                     setTimeout(() => {
@@ -264,6 +267,26 @@ function animateSkills() {
                         bar.classList.add('animate');
                     }, 100);
                 });
+
+                // Animate Numbers
+                skillNumbers.forEach(number => {
+                    const target = +number.getAttribute('data-target');
+                    const duration = 1500; // Animation duration in ms
+                    const increment = target / (duration / 16); // Calculate increment for 60fps
+
+                    let current = 0;
+                    const updateNumber = () => {
+                        current += increment;
+                        if (current < target) {
+                            number.textContent = Math.ceil(current) + '%';
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            number.textContent = target + '%';
+                        }
+                    };
+                    requestAnimationFrame(updateNumber);
+                });
+
                 observer.unobserve(entry.target);
             }
         });
