@@ -57,6 +57,10 @@ body.dark-mode {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
+section {
+  scroll-margin-top: 6rem;
+}
+
 /* ===================================
    Utility Classes
    =================================== */
@@ -141,17 +145,26 @@ body.dark-mode {
   color: var(--primary);
 }
 
+.nav-links a.active {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
 .btn-contact {
-  background-color: var(--primary);
-  color: var(--white) !important;
+  background-color: transparent;
+  color: var(--slate-800) !important;
   padding: 0.5rem 1.25rem;
-  border-radius: 9999px;
-  font-weight: 600;
+  font-weight: 700;
   transition: opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.dark-mode .btn-contact {
+  color: var(--white) !important;
 }
 
 .btn-contact:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .theme-toggle,
@@ -473,6 +486,10 @@ body.dark-mode {
   font-size: 2.25rem !important;
 }
 
+#about .section-title .icon-primary {
+  display: none;
+}
+
 .focus-quote {
   font-size: 1.25rem;
   color: var(--slate-600);
@@ -556,6 +573,15 @@ body.dark-mode {
   background-color: var(--bg-dark);
 }
 
+@media (max-width: 768px) {
+  .experiences-section .section-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .section-header {
   margin-bottom: 4rem;
 }
@@ -604,6 +630,15 @@ body.dark-mode {
 .timeline-item {
   position: relative;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .timeline-content {
@@ -747,10 +782,26 @@ body.dark-mode {
   align-items: start;
 }
 
+/* 
 @media (min-width: 1024px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+} 
+*/
+
+.education-column {
+  margin: 0 auto;
+  max-width: 800px;
+  /* Optional: limit width for better readability in single column */
+  width: 100%;
+  scroll-margin-top: 6rem;
+  /* Adjust for sticky header */
+}
+
+.education-column .education-title,
+.education-column .interests-title {
+  text-align: center;
 }
 
 .skills-list {
@@ -758,6 +809,16 @@ body.dark-mode {
   flex-direction: column;
   gap: 1.25rem;
 }
+
+/* Reverted back to single column as requested */
+/*
+@media (min-width: 1024px) {
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4rem;
+  }
+}
+*/
 
 
 
@@ -808,7 +869,20 @@ body.dark-mode {
 
 
 /* Education Column */
+.education-section {
+  padding: 6rem 0;
+  background-color: var(--white);
+}
+
+.dark-mode .education-section {
+  background-color: var(--bg-dark);
+  /* Alternating background color */
+}
+
 .education-column {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
   background-color: var(--white);
   padding: 2rem;
   border-radius: 1.5rem;
@@ -1352,4 +1426,40 @@ body.dark-mode {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===================================
+   Scroll to Top Button
+   =================================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--primary);
+  color: var(--white);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 99;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background-color: var(--blue-900);
+  transform: translateY(-5px);
 }

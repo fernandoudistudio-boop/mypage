@@ -375,3 +375,56 @@ document.addEventListener('DOMContentLoaded', () => {
     animateSkills();
     reveal(); // Initial check for elements in view
 });
+
+// ===================================
+// Active Navigation Highlight
+// ===================================
+// Intersection Observer to highlight active section in nav
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3 // Trigger when 30% of the section is visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            // Remove active class from all links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            // Add active class to current link
+            const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe all sections that have an ID and the education div
+const sectionsToObserve = document.querySelectorAll('section[id], #education');
+sectionsToObserve.forEach(section => {
+    observer.observe(section);
+});
+
+// ===================================
+// Scroll to Top Button
+// ===================================
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+    } else {
+        scrollTopBtn.classList.remove('visible');
+    }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
