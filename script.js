@@ -72,8 +72,6 @@ const formMessage = document.getElementById('formMessage');
 // ===================================
 function getAutoThemeByTime() {
     const currentHour = new Date().getHours();
-    // Dark mode: 18:00 (6 PM) to 05:59 (5:59 AM)
-    // Light mode: 06:00 (6 AM) to 17:59 (5:59 PM)
     return (currentHour >= 18 || currentHour < 6) ? 'dark' : 'light';
 }
 
@@ -83,16 +81,13 @@ function initTheme() {
 
     let themeToApply;
 
-    // If user manually changed theme, use their preference
     if (manualOverride === 'true' && savedTheme) {
         themeToApply = savedTheme;
     } else {
-        // Otherwise, use automatic time-based theme
         themeToApply = getAutoThemeByTime();
         localStorage.setItem('theme', themeToApply);
     }
 
-    // Apply theme
     if (themeToApply === 'light') {
         document.body.classList.remove('dark-mode');
         themeToggle.querySelector('.material-symbols-outlined').textContent = 'light_mode';
@@ -106,8 +101,6 @@ themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     themeToggle.querySelector('.material-symbols-outlined').textContent = isDark ? 'dark_mode' : 'light_mode';
-
-    // Save user preference and mark as manual override
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     localStorage.setItem('manualThemeOverride', 'true');
 });
@@ -119,7 +112,6 @@ mobileMenuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Close mobile menu when clicking a link
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -133,8 +125,6 @@ function generateTimeline() {
     const timeline = document.getElementById('timeline');
 
     EXPERIENCES.forEach((exp, index) => {
-        const isEven = index % 2 !== 0;
-
         const item = document.createElement('div');
         item.className = 'timeline-item reveal';
 
@@ -271,8 +261,8 @@ function animateSkills() {
                 // Animate Numbers
                 skillNumbers.forEach(number => {
                     const target = +number.getAttribute('data-target');
-                    const duration = 1500; // Animation duration in ms
-                    const increment = target / (duration / 16); // Calculate increment for 60fps
+                    const duration = 1500;
+                    const increment = target / (duration / 16);
 
                     let current = 0;
                     const updateNumber = () => {
@@ -310,7 +300,6 @@ contactForm.addEventListener('submit', async (e) => {
         mensagem: document.getElementById('mensagem').value
     };
 
-    // Update button state
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Enviando...';
     formMessage.textContent = '';
@@ -327,16 +316,12 @@ contactForm.addEventListener('submit', async (e) => {
         });
 
         if (response.ok) {
-            // Success
             submitBtn.classList.add('success');
             submitBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Enviado com Sucesso!';
             formMessage.textContent = 'Obrigado! Responderei em breve.';
             formMessage.classList.add('success');
-
-            // Reset form
             contactForm.reset();
 
-            // Reset button after 5 seconds
             setTimeout(() => {
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('success');
@@ -348,18 +333,30 @@ contactForm.addEventListener('submit', async (e) => {
             throw new Error('Erro no envio');
         }
     } catch (error) {
-        // Error
         submitBtn.classList.add('error');
         submitBtn.innerHTML = '<span class="material-symbols-outlined">error</span> Erro. ID Inválido ou Rede.';
         formMessage.textContent = 'Dica: Verifique se o seu "Form ID" no arquivo script.js está correto.';
         formMessage.classList.add('error');
 
-        // Reset button after 5 seconds
         setTimeout(() => {
             submitBtn.disabled = false;
             submitBtn.classList.remove('error');
             submitBtn.innerHTML = '<span class="material-symbols-outlined">send</span> Enviar Mensagem';
         }, 5000);
+    }
+});
+
+// ===================================
+// PROFILE PICTURE FADE SYSTEM
+// ===================================
+window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    const trigger = 180;
+
+    if (scroll > trigger) {
+        document.body.classList.add('avatar-active');
+    } else {
+        document.body.classList.remove('avatar-active');
     }
 });
 
@@ -373,28 +370,25 @@ document.addEventListener('DOMContentLoaded', () => {
     generateEducation();
     generateInterests();
     animateSkills();
-    reveal(); // Initial check for elements in view
+    reveal();
 });
 
 // ===================================
 // Active Navigation Highlight
 // ===================================
-// Intersection Observer to highlight active section in nav
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.3 // Trigger when 30% of the section is visible
+    threshold: 0.3
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
-            // Remove active class from all links
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
             });
-            // Add active class to current link
             const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
@@ -403,7 +397,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all sections that have an ID and the education div
 const sectionsToObserve = document.querySelectorAll('section[id], #education');
 sectionsToObserve.forEach(section => {
     observer.observe(section);

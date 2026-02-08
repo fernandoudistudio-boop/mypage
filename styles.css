@@ -1463,3 +1463,64 @@ section {
   background-color: var(--blue-900);
   transform: translateY(-5px);
 }
+
+/* ===================================
+   PROFILE PICTURE FADE SYSTEM
+   =================================== */
+
+/* Logo & Header Avatar */
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logo span {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.header-avatar-container {
+  position: absolute;
+  left: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2px solid var(--primary);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  background-color: var(--white);
+}
+
+.dark-mode .header-avatar-container {
+  background-color: var(--slate-800);
+}
+
+.header-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* State: Avatar Active (Scrolled) */
+body.avatar-active .logo span {
+  opacity: 0;
+  transform: translateX(-10px);
+  pointer-events: none;
+}
+
+body.avatar-active .header-avatar-container {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hero Picture Fade */
+.profile-image-container {
+  transition: opacity 0.4s ease !important;
+}
+
+body.avatar-active .profile-image-container {
+  opacity: 0;
+  pointer-events: none;
+}
