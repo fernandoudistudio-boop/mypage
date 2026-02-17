@@ -251,7 +251,7 @@ section {
 
 @media (min-width: 1024px) {
   .hero-content {
-    flex-direction: row;
+    flex-direction: row-reverse;
     gap: 3rem;
   }
 }
