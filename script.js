@@ -328,10 +328,16 @@ const WORKS = {
             images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
-            title: 'Apps',
-            description: 'Criação de aplicativos customizados utilizando Power Apps, focados na digitalização de processos operacionais, coleta de dados em campo e integração com sistemas corporativos existentes.',
-            icon: 'widgets',
-            images: [] // User will add later
+            title: 'Apps Mobile',
+            description: 'Desenvolvimento de aplicativos voltados para o uso em dispositivos móveis, facilitando a coleta de dados em campo, inspeções e acesso rápido a informações em qualquer lugar.',
+            icon: 'smartphone',
+            images: []
+        },
+        {
+            title: 'Apps Desktop',
+            description: 'Criação de soluções de desktop para processos administrativos complexos, gestão de back-office e visualização detalhada de dados em telas maiores.',
+            icon: 'desktop_windows',
+            images: []
         }
     ],
     en: [
@@ -342,9 +348,15 @@ const WORKS = {
             images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
-            title: 'Apps',
-            description: 'Creation of custom applications using Power Apps, focused on digitalization of operational processes, field data collection, and integration with existing corporate systems.',
-            icon: 'widgets',
+            title: 'Mobile Apps',
+            description: 'Development of applications focused on mobile device usage, facilitating field data collection, inspections, and quick access to information anywhere.',
+            icon: 'smartphone',
+            images: []
+        },
+        {
+            title: 'Desktop Apps',
+            description: 'Creation of desktop solutions for complex administrative processes, back-office management, and detailed data visualization on larger screens.',
+            icon: 'desktop_windows',
             images: []
         }
     ],
@@ -356,9 +368,15 @@ const WORKS = {
             images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
-            title: 'Apps',
-            description: 'Creación de aplicaciones personalizadas mediante Power Apps, centradas en la digitalización de procesos operativos, la recopilación de datos de campo y la integración con los sistemas corporativos existentes.',
-            icon: 'widgets',
+            title: 'Apps Móviles',
+            description: 'Desarrollo de aplicaciones enfocadas en el uso de dispositivos móviles, facilitando la recopilación de datos de campo, inspecciones y acceso rápido a la información en cualquier lugar.',
+            icon: 'smartphone',
+            images: []
+        },
+        {
+            title: 'Apps de Escritorio',
+            description: 'Creación de soluciones de escritorio para procesos administrativos complejos, gestión de back-office y visualización detallada de datos en pantallas más grandes.',
+            icon: 'desktop_windows',
             images: []
         }
     ]
