@@ -531,6 +531,27 @@ function generateWorks() {
         const workItem = document.createElement('div');
         workItem.className = 'work-item reveal';
 
+        // Generate gallery HTML if images exist
+        let galleryHTML = '';
+        if (work.images && work.images.length > 0) {
+            galleryHTML = `<div class="work-gallery">`;
+            work.images.forEach(img => {
+                galleryHTML += `
+                    <div class="gallery-item">
+                        <img src="${img}" alt="${work.title}" loading="lazy">
+                    </div>
+                `;
+            });
+            galleryHTML += `</div>`;
+        } else {
+            galleryHTML = `
+                <div class="empty-gallery">
+                    <span class="material-symbols-outlined">image_not_supported</span>
+                    <p data-i18n="empty-gallery-msg">${TRANSLATIONS[currentLanguage]['empty-gallery-msg'] || 'Novos projetos em breve...'}</p>
+                </div>
+            `;
+        }
+
         workItem.innerHTML = `
             <div class="work-header" onclick="toggleWork(${index})">
                 <div class="work-title-group">
@@ -541,6 +562,7 @@ function generateWorks() {
             </div>
             <div class="work-content" id="work-content-${index}">
                 <p>${work.description}</p>
+                ${galleryHTML}
             </div>
         `;
 
@@ -551,6 +573,9 @@ function generateWorks() {
 function toggleWork(index) {
     const content = document.getElementById(`work-content-${index}`);
     const icon = document.getElementById(`expand-icon-${index}`);
+
+    if (!content || !icon) return;
+
     const allContents = document.querySelectorAll('.work-content');
     const allIcons = document.querySelectorAll('.expand-icon');
 
@@ -558,16 +583,18 @@ function toggleWork(index) {
     allContents.forEach((c, i) => {
         if (i !== index) {
             c.classList.remove('active');
-            allIcons[i].style.transform = 'rotate(0deg)';
+            if (allIcons[i]) allIcons[i].style.transform = 'rotate(0deg)';
         }
     });
 
     // Toggle current
-    content.classList.toggle('active');
-    if (content.classList.contains('active')) {
-        icon.style.transform = 'rotate(180deg)';
-    } else {
+    const isActive = content.classList.contains('active');
+    if (isActive) {
+        content.classList.remove('active');
         icon.style.transform = 'rotate(0deg)';
+    } else {
+        content.classList.add('active');
+        icon.style.transform = 'rotate(180deg)';
     }
 }
 
