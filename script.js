@@ -179,6 +179,7 @@ const TRANSLATIONS = {
     pt: {
         "nav-about": "Sobre",
         "nav-experience": "Experiência",
+        "nav-works": "Trabalhos",
         "nav-skills": "Habilidades",
         "nav-education": "Formação",
         "nav-contact": "Contato",
@@ -195,6 +196,7 @@ const TRANSLATIONS = {
         "focus-apps-title": "Apps Customizados",
         "focus-apps-desc": "Sistemas modernos, fáceis de usar e acessíveis.",
         "experience-title": "Minhas Experiências",
+        "works-title": "Alguns trabalhos",
         "skills-title": "Habilidades Técnicas",
         "ed-title": "Educação e Foco",
         "interests-title": "Interesses & Hobies",
@@ -223,6 +225,7 @@ const TRANSLATIONS = {
     en: {
         "nav-about": "About",
         "nav-experience": "Experience",
+        "nav-works": "Works",
         "nav-skills": "Skills",
         "nav-education": "Education",
         "nav-contact": "Contact",
@@ -239,6 +242,7 @@ const TRANSLATIONS = {
         "focus-apps-title": "Custom Apps",
         "focus-apps-desc": "Modern, easy-to-use, and accessible systems.",
         "experience-title": "My Experience",
+        "works-title": "Some Works",
         "skills-title": "Technical Skills",
         "ed-title": "Education & Focus",
         "interests-title": "Interests & Hobbies",
@@ -267,6 +271,7 @@ const TRANSLATIONS = {
     es: {
         "nav-about": "Sobre",
         "nav-experience": "Experiencia",
+        "nav-works": "Trabajos",
         "nav-skills": "Habilidades",
         "nav-education": "Formación",
         "nav-contact": "Contacto",
@@ -275,7 +280,7 @@ const TRANSLATIONS = {
         "hero-btn-call": "¡Solicite una llamada!",
         "hero-btn-trajectory": "Trayectoria Profesional",
         "about-title": "Desarrollador de Aplicaciones Low-Code / No-Code y Especialista en Integración",
-        "about-quote": '"Desarrollador de soluciones No-Code y Low-Code con enfoque en automatización de procesos, integración de sistemas y creación de aplicaciones web. Experiencia en plataformas como Power Platform, Bubble.io y orquestación de flujos de trabajo con n8n, además de herramientas asistidas por IA como Lovable, Stitch y Antigravity. Entrego soluciones que reducen el retrabajo, mejoran la eficiencia operativa y aceleran la entrega de productos digitales."',
+        "about-quote": '"Desarrollador de soluciones No-Code y Low-Code con enfoque en automatización de procesos, integração de sistemas e criação de aplicações web. Experiência em plataformas como Power Platform, Bubble.io y orquestación de flujos de trabajo con n8n, además de herramientas asistidas por IA como Lovable, Stitch y Antigravity. Entrego soluciones que reducen el retrabajo, mejoran la eficiencia operativa y aceleran la entrega de productos digitales."',
         "focus-automation-title": "Automatización",
         "focus-automation-desc": "Eliminando retrabajo y procesos manuales lentos.",
         "focus-dashboards-title": "Tableros",
@@ -283,6 +288,7 @@ const TRANSLATIONS = {
         "focus-apps-title": "Apps Personalizadas",
         "focus-apps-desc": "Sistemas modernos, fáciles de usar y accesibles.",
         "experience-title": "Mis Experiencias",
+        "works-title": "Algunos trabajos",
         "skills-title": "Habilidades Técnicas",
         "ed-title": "Educación y Enfoque",
         "interests-title": "Intereses y Pasatiempos",
@@ -308,6 +314,45 @@ const TRANSLATIONS = {
         "error-msg": 'Sugerencia: Verifique si su "Form ID" en script.js es correcto.',
         "btn-resend": "Enviar Mensaje"
     }
+};
+
+const WORKS = {
+    pt: [
+        {
+            title: 'Dashboards',
+            description: 'Desenvolvimento de dashboards inteligentes e intuitivos no Power BI, integrando diversas fontes de dados para fornecer insights em tempo real e facilitar a tomada de decisão estratégica.',
+            icon: 'analytics'
+        },
+        {
+            title: 'Apps',
+            description: 'Criação de aplicativos customizados utilizando Power Apps, focados na digitalização de processos operacionais, coleta de dados em campo e integração com sistemas corporativos existentes.',
+            icon: 'widgets'
+        }
+    ],
+    en: [
+        {
+            title: 'Dashboards',
+            description: 'Development of intelligent and intuitive dashboards in Power BI, integrating several data sources to provide real-time insights and facilitate strategic decision-making.',
+            icon: 'analytics'
+        },
+        {
+            title: 'Apps',
+            description: 'Creation of custom applications using Power Apps, focused on digitalization of operational processes, field data collection, and integration with existing corporate systems.',
+            icon: 'widgets'
+        }
+    ],
+    es: [
+        {
+            title: 'Tableros',
+            description: 'Desarrollo de tableros inteligentes e intuitivos en Power BI, integrando diversas fuentes de datos para proporcionar información en tiempo real y facilitar la toma de decisiones estratégicas.',
+            icon: 'analytics'
+        },
+        {
+            title: 'Apps',
+            description: 'Creación de aplicaciones personalizadas mediante Power Apps, centradas en la digitalización de procesos operativos, la recopilación de datos de campo y la integración con los sistemas corporativos existentes.',
+            icon: 'widgets'
+        }
+    ]
 };
 
 // ===================================
@@ -406,6 +451,7 @@ function updateUI() {
 
     // Re-generate dynamic content
     generateTimeline();
+    generateWorks();
     generateSkills();
     generateEducation();
     generateInterests();
@@ -463,6 +509,57 @@ function generateTimeline() {
 
         timeline.appendChild(item);
     });
+}
+
+// ===================================
+// Generate Works
+// ===================================
+function generateWorks() {
+    const worksList = document.getElementById('worksList');
+    worksList.innerHTML = '';
+
+    WORKS[currentLanguage].forEach((work, index) => {
+        const workItem = document.createElement('div');
+        workItem.className = 'work-item reveal';
+
+        workItem.innerHTML = `
+            <div class="work-header" onclick="toggleWork(${index})">
+                <div class="work-title-group">
+                    <span class="material-symbols-outlined work-icon">${work.icon}</span>
+                    <h3>${work.title}</h3>
+                </div>
+                <span class="material-symbols-outlined expand-icon" id="expand-icon-${index}">expand_more</span>
+            </div>
+            <div class="work-content" id="work-content-${index}">
+                <p>${work.description}</p>
+            </div>
+        `;
+
+        worksList.appendChild(workItem);
+    });
+}
+
+function toggleWork(index) {
+    const content = document.getElementById(`work-content-${index}`);
+    const icon = document.getElementById(`expand-icon-${index}`);
+    const allContents = document.querySelectorAll('.work-content');
+    const allIcons = document.querySelectorAll('.expand-icon');
+
+    // Close others
+    allContents.forEach((c, i) => {
+        if (i !== index) {
+            c.classList.remove('active');
+            allIcons[i].style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // Toggle current
+    content.classList.toggle('active');
+    if (content.classList.contains('active')) {
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        icon.style.transform = 'rotate(0deg)';
+    }
 }
 
 // ===================================
