@@ -220,7 +220,8 @@ const TRANSLATIONS = {
         "sent-msg": "Obrigado! Responderei em breve.",
         "error-send": "Erro. ID Inválido ou Rede.",
         "error-msg": 'Dica: Verifique se o seu "Form ID" no arquivo script.js está correto.',
-        "btn-resend": "Enviar Mensagem"
+        "btn-resend": "Enviar Mensagem",
+        "empty-gallery-msg": "Novos projetos em breve..."
     },
     en: {
         "nav-about": "About",
@@ -266,7 +267,8 @@ const TRANSLATIONS = {
         "sent-msg": "Thank you! I will respond soon.",
         "error-send": "Error. Invalid ID or Network.",
         "error-msg": 'Tip: Check if your "Form ID" in script.js is correct.',
-        "btn-resend": "Send Message"
+        "btn-resend": "Send Message",
+        "empty-gallery-msg": "New projects coming soon..."
     },
     es: {
         "nav-about": "Sobre",
@@ -312,7 +314,8 @@ const TRANSLATIONS = {
         "sent-msg": "¡Gracias! Responderé pronto.",
         "error-send": "Error. ID Inválido o Red.",
         "error-msg": 'Sugerencia: Verifique si su "Form ID" en script.js es correcto.',
-        "btn-resend": "Enviar Mensaje"
+        "btn-resend": "Enviar Mensaje",
+        "empty-gallery-msg": "Próximamente nuevos proyectos..."
     }
 };
 
@@ -321,36 +324,42 @@ const WORKS = {
         {
             title: 'Dashboards',
             description: 'Desenvolvimento de dashboards inteligentes e intuitivos no Power BI, integrando diversas fontes de dados para fornecer insights em tempo real e facilitar a tomada de decisão estratégica.',
-            icon: 'analytics'
+            icon: 'analytics',
+            images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
             title: 'Apps',
             description: 'Criação de aplicativos customizados utilizando Power Apps, focados na digitalização de processos operacionais, coleta de dados em campo e integração com sistemas corporativos existentes.',
-            icon: 'widgets'
+            icon: 'widgets',
+            images: [] // User will add later
         }
     ],
     en: [
         {
             title: 'Dashboards',
             description: 'Development of intelligent and intuitive dashboards in Power BI, integrating several data sources to provide real-time insights and facilitate strategic decision-making.',
-            icon: 'analytics'
+            icon: 'analytics',
+            images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
             title: 'Apps',
             description: 'Creation of custom applications using Power Apps, focused on digitalization of operational processes, field data collection, and integration with existing corporate systems.',
-            icon: 'widgets'
+            icon: 'widgets',
+            images: []
         }
     ],
     es: [
         {
             title: 'Tableros',
             description: 'Desarrollo de tableros inteligentes e intuitivos en Power BI, integrando diversas fuentes de datos para proporcionar información en tiempo real y facilitar la toma de decisiones estratégicas.',
-            icon: 'analytics'
+            icon: 'analytics',
+            images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
             title: 'Apps',
             description: 'Creación de aplicaciones personalizadas mediante Power Apps, centradas en la digitalización de procesos operativos, la recopilación de datos de campo y la integración con los sistemas corporativos existentes.',
-            icon: 'widgets'
+            icon: 'widgets',
+            images: []
         }
     ]
 };
