@@ -334,10 +334,10 @@ const WORKS = {
             images: []
         },
         {
-            title: 'Apps Desktop',
-            description: 'Criação de soluções de desktop para processos administrativos complexos, gestão de back-office e visualização detalhada de dados em telas maiores.',
+            title: 'Checklist Manager',
+            description: 'Solução robusta para gestão de conformidade e auditorias.<br><br><b>Tecnologias:</b><br>• Core: React 19 + Vite<br>• Linguagem: TypeScript<br>• Estilo: Tailwind CSS (Dark Mode)<br>• Gráficos: Recharts<br>• IA: Google Gemini API<br>• Rotas: React Router 7<br>• Ícones: Material Symbols',
             icon: 'desktop_windows',
-            images: []
+            images: ['img/apps/desktop/desktop1.png', 'img/apps/desktop/desktop2.png', 'img/apps/desktop/desktop3.png', 'img/apps/desktop/desktop4.png']
         }
     ],
     en: [
@@ -354,10 +354,10 @@ const WORKS = {
             images: []
         },
         {
-            title: 'Desktop Apps',
-            description: 'Creation of desktop solutions for complex administrative processes, back-office management, and detailed data visualization on larger screens.',
+            title: 'Checklist Manager',
+            description: 'Robust solution for compliance and audit management.<br><br><b>Technologies:</b><br>• Core: React 19 + Vite<br>• Language: TypeScript<br>• Style: Tailwind CSS (Dark Mode)<br>• Charts: Recharts<br>• AI: Google Gemini API<br>• Routing: React Router 7<br>• Icons: Material Symbols',
             icon: 'desktop_windows',
-            images: []
+            images: ['img/apps/desktop/desktop1.png', 'img/apps/desktop/desktop2.png', 'img/apps/desktop/desktop3.png', 'img/apps/desktop/desktop4.png']
         }
     ],
     es: [
@@ -374,10 +374,10 @@ const WORKS = {
             images: []
         },
         {
-            title: 'Apps de Escritorio',
-            description: 'Creación de soluciones de escritorio para procesos administrativos complejos, gestión de back-office y visualización detallada de datos en pantallas más grandes.',
+            title: 'Checklist Manager',
+            description: 'Solución robusta para la gestión de cumplimiento y auditorías.<br><br><b>Tecnologías:</b><br>• Core: React 19 + Vite<br>• Lenguaje: TypeScript<br>• Estilo: Tailwind CSS (Dark Mode)<br>• Gráficos: Recharts<br>• IA: Google Gemini API<br>• Rutas: React Router 7<br>• Iconos: Material Symbols',
             icon: 'desktop_windows',
-            images: []
+            images: ['img/apps/desktop/desktop1.png', 'img/apps/desktop/desktop2.png', 'img/apps/desktop/desktop3.png', 'img/apps/desktop/desktop4.png']
         }
     ]
 };
