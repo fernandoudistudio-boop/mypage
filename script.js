@@ -328,14 +328,21 @@ const WORKS = {
             images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
-            title: 'Apps Mobile',
-            description: 'Desenvolvimento de aplicativos voltados para o uso em dispositivos móveis, facilitando a coleta de dados em campo, inspeções e acesso rápido a informações em qualquer lugar.',
+            title: 'Vendas Manager',
+            description: 'Aplicativo para Controle e Conciliação de Vendas.<br><br><b>Tecnologias:</b><br>• Core: Microsoft Power Apps<br>• Automação: Power Automate<br>• Banco de Dados: SharePoint',
             icon: 'smartphone',
-            images: []
+            layout: 'mobile-app',
+            images: [
+                'img/apps/mobile/App Vendas/1.jpeg',
+                'img/apps/mobile/App Vendas/2.jpeg',
+                'img/apps/mobile/App Vendas/3.jpeg',
+                'img/apps/mobile/App Vendas/4.jpeg',
+                'img/apps/mobile/App Vendas/5.jpeg'
+            ]
         },
         {
             title: 'Checklist Manager',
-            description: 'Solução robusta para gestão de conformidade e auditorias.<br><br><b>Tecnologias:</b><br>• Core: React 19 + Vite<br>• Linguagem: TypeScript<br>• Estilo: Tailwind CSS (Dark Mode)<br>• Gráficos: Recharts<br>• IA: Google Gemini API<br>• Rotas: React Router 7<br>• Ícones: Material Symbols',
+            description: 'Solução robusta para gestão de conformidade e auditorias.<br><br><b>Tecnologias:</b><br>• Core: React 19, Vite, TypeScript, Tailwind CSS, Recharts, Gemini API, Material Symbols<br>• Automação: N8N<br>• Banco de Dados: Supabase',
             icon: 'desktop_windows',
             images: ['img/apps/desktop/desktop1.png', 'img/apps/desktop/desktop2.png', 'img/apps/desktop/desktop3.png', 'img/apps/desktop/desktop4.png']
         }
@@ -348,14 +355,21 @@ const WORKS = {
             images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
-            title: 'Mobile Apps',
-            description: 'Development of applications focused on mobile device usage, facilitating field data collection, inspections, and quick access to information anywhere.',
+            title: 'Vendas Manager',
+            description: 'Application for Sales Control and Conciliation.<br><br><b>Technologies:</b><br>• Core: Microsoft Power Apps<br>• Automation: Power Automate<br>• Database: SharePoint',
             icon: 'smartphone',
-            images: []
+            layout: 'mobile-app',
+            images: [
+                'img/apps/mobile/App Vendas/1.jpeg',
+                'img/apps/mobile/App Vendas/2.jpeg',
+                'img/apps/mobile/App Vendas/3.jpeg',
+                'img/apps/mobile/App Vendas/4.jpeg',
+                'img/apps/mobile/App Vendas/5.jpeg'
+            ]
         },
         {
             title: 'Checklist Manager',
-            description: 'Robust solution for compliance and audit management.<br><br><b>Technologies:</b><br>• Core: React 19 + Vite<br>• Language: TypeScript<br>• Style: Tailwind CSS (Dark Mode)<br>• Charts: Recharts<br>• AI: Google Gemini API<br>• Routing: React Router 7<br>• Icons: Material Symbols',
+            description: 'Robust solution for compliance and audit management.<br><br><b>Technologies:</b><br>• Core: React 19, Vite, TypeScript, Tailwind CSS, Recharts, Gemini API, Material Symbols<br>• Automation: N8N<br>• Database: Supabase',
             icon: 'desktop_windows',
             images: ['img/apps/desktop/desktop1.png', 'img/apps/desktop/desktop2.png', 'img/apps/desktop/desktop3.png', 'img/apps/desktop/desktop4.png']
         }
@@ -368,14 +382,21 @@ const WORKS = {
             images: ['img/dashboards/Dashboard1.png', 'img/dashboards/Dashboard2.png', 'img/dashboards/Dashboard3.png', 'img/dashboards/Dashboard4.png']
         },
         {
-            title: 'Apps Móviles',
-            description: 'Desarrollo de aplicaciones enfocadas en el uso de dispositivos móviles, facilitando la recopilación de datos de campo, inspecciones y acceso rápido a la información en cualquier lugar.',
+            title: 'Vendas Manager',
+            description: 'Aplicación para Control y Conciliación de Ventas.<br><br><b>Tecnologías:</b><br>• Núcleo: Microsoft Power Apps<br>• Automatización: Power Automate<br>• Base de Datos: SharePoint',
             icon: 'smartphone',
-            images: []
+            layout: 'mobile-app',
+            images: [
+                'img/apps/mobile/App Vendas/1.jpeg',
+                'img/apps/mobile/App Vendas/2.jpeg',
+                'img/apps/mobile/App Vendas/3.jpeg',
+                'img/apps/mobile/App Vendas/4.jpeg',
+                'img/apps/mobile/App Vendas/5.jpeg'
+            ]
         },
         {
             title: 'Checklist Manager',
-            description: 'Solución robusta para la gestión de cumplimiento y auditorías.<br><br><b>Tecnologías:</b><br>• Core: React 19 + Vite<br>• Lenguaje: TypeScript<br>• Estilo: Tailwind CSS (Dark Mode)<br>• Gráficos: Recharts<br>• IA: Google Gemini API<br>• Rutas: React Router 7<br>• Iconos: Material Symbols',
+            description: 'Solución robusta para la gestión de cumplimiento y auditorías.<br><br><b>Tecnologías:</b><br>• Núcleo: React 19, Vite, TypeScript, Tailwind CSS, Recharts, Gemini API, Material Symbols<br>• Automatización: N8N<br>• Base de Datos: Supabase',
             icon: 'desktop_windows',
             images: ['img/apps/desktop/desktop1.png', 'img/apps/desktop/desktop2.png', 'img/apps/desktop/desktop3.png', 'img/apps/desktop/desktop4.png']
         }
@@ -552,10 +573,11 @@ function generateWorks() {
         // Generate gallery HTML if images exist
         let galleryHTML = '';
         if (work.images && work.images.length > 0) {
-            galleryHTML = `<div class="work-gallery">`;
+            const isMobileApp = work.layout === 'mobile-app';
+            galleryHTML = `<div class="work-gallery ${isMobileApp ? 'work-gallery-mobile' : ''}">`;
             work.images.forEach(img => {
                 galleryHTML += `
-                    <div class="gallery-item">
+                    <div class="gallery-item ${isMobileApp ? 'gallery-item-mobile' : ''}">
                         <img src="${img}" alt="${work.title}" loading="lazy">
                     </div>
                 `;

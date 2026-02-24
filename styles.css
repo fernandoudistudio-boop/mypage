@@ -1303,6 +1303,36 @@ section {
   font-size: 3rem !important;
 }
 
+/* Mobile App Specific Gallery */
+.work-gallery-mobile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 0 1.5rem 0 4.5rem;
+}
+
+@media (min-width: 1024px) {
+  .work-gallery-mobile {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.gallery-item-mobile {
+  aspect-ratio: 9 / 16;
+}
+
+@media (max-width: 640px) {
+  .work-gallery-mobile {
+    padding: 0 1.5rem;
+    /* Less padding on mobile to give more space for the 2 columns */
+  }
+
+  .work-content p {
+    padding-left: 1.5rem;
+    /* Match gallery padding on mobile */
+  }
+}
+
 /* ===================================
    Contact Section
    =================================== */
